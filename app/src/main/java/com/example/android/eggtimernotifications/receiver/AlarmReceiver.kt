@@ -22,6 +22,7 @@ import android.content.Context
 import android.content.Intent
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.core.content.getSystemService
 import com.example.android.eggtimernotifications.R
 import com.example.android.eggtimernotifications.util.sendNotification
 
@@ -32,7 +33,9 @@ class AlarmReceiver: BroadcastReceiver() {
         Toast.makeText(context, context.getText(R.string.eggs_ready), Toast.LENGTH_SHORT).show()
 
         // TODO: Step 1.9 add call to sendNotification
+        val notificationManager = context.getSystemService<NotificationManager>()
 
+        notificationManager?.sendNotification(context.getString(R.string.eggs_ready), context)
     }
 
 }
